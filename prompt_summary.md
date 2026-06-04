@@ -8,7 +8,7 @@ This repository contains two primary reusable prompt templates used by the AI ag
 
 * **Purpose:** Queries the MongoDB case summary store to find active and recently updated support cases for a specific company/account, and compiles them into a structured status overview.
 * **Key Inputs / Variables:**
-  * `{{ACCOUNT_NAME}}` (e.g., `"Apple Inc."`)
+  * `{{ACCOUNT_NAME}}` (e.g., `"Company Inc."`)
   * `{{N_DAYS}}` (default: 14)
 * **How It Works:**
   1. Computes the current UTC time and calculates two ISO cutoff date strings: a main cutoff date (`{{CUTOFF_ISO_DATE}}` based on `{{N_DAYS}}`) and a 3-month cutoff date (`{{CUTOFF_3_MONTHS_ISO_DATE}}`).
@@ -20,7 +20,7 @@ This repository contains two primary reusable prompt templates used by the AI ag
 
 ### Example Use Case:
 ```markdown
-PR_LIST_ACCOUNT_CASES_RECENT for Apple Inc. with N_DAYS = 14
+PR_LIST_ACCOUNT_CASES_RECENT for Company Inc. with N_DAYS = 14
 ```
 **Expected Output:**
 > ### Recent Cases Table
@@ -41,7 +41,7 @@ PR_LIST_ACCOUNT_CASES_RECENT for Apple Inc. with N_DAYS = 14
 
 * **Purpose:** Performs a deep timeline and sentiment analysis of the comment history for a designated list of cases to produce a polished, high-fidelity customer-facing weekly active cases report.
 * **Key Inputs / Variables:**
-  * `{{CUSTOMER}}` (e.g., `"Apple"`)
+  * `{{CUSTOMER}}` (e.g., `"Company"`)
   * `{{CASE_LIST}}` (e.g., `"01581877, 01584501"`)
   * `{{REPORT_DATE}}` (calculated)
   * `{{MARKDOWN_FORMAT}}` (default: `true`, outputs raw markdown in code fences for easy copy-pasting)
@@ -54,15 +54,15 @@ PR_LIST_ACCOUNT_CASES_RECENT for Apple Inc. with N_DAYS = 14
 
 ### Example Use Case:
 ```markdown
-PR_WEEKLY_CASE_REPORT for Apple cases 01581877, 01584501 (both Active and Resolved)
+PR_WEEKLY_CASE_REPORT for Company cases 01581877, 01584501 (both Active and Resolved)
 ```
 **Expected Output:**
 > ````markdown
-> # Apple Cases Report - 2026-06-03
+> # Company Cases Report - 2026-06-03
 > 
 > **1. [[01584501](https://support.mongodb.com/case/01584501)] app failed after mongo upgrade from 7.0.28 to 7.0.32**\
 > 🟡 S3 | In Progress | Opened 2 days ago
->    - Summary: Apple Team experienced application crashes immediately following a minor MongoDB upgrade. The issue is suspected to be related to driver compatibility.
+>    - Summary: Company Team experienced application crashes immediately following a minor MongoDB upgrade. The issue is suspected to be related to driver compatibility.
 >    - Contact: John Doe
 >    - MongoDB Owner: Jane Smith
 >    - Latest Update: 
